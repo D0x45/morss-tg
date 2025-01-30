@@ -53,7 +53,7 @@ function parseCronStringToMinutes(cron) {
 }
 
 function convertMinutesToCronString(m) {
-    // there is no toher way of enforcing the HOUR parameter
+    // there is no other way of enforcing the HOUR parameter
     // unless the worker itself checks for that...
     m %= 60;
     if (m <= 1) return '* * * * *';
