@@ -2,6 +2,8 @@ name: Build and Deploy Worker
 
 on:
   push:
+    paths-ignore:
+      - 'README.md'
     branches:
       - master
   workflow_dispatch:
