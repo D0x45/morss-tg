@@ -4,4 +4,4 @@ dist
 bun.lockb
 package-lock.json
 wrangler.toml
-data.json
+src/data.json
