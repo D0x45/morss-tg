@@ -1,0 +1,53 @@
+name: Build and Deploy Worker
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+        logLevel:
+          description: 'Log level'
+          required: true
+          default: 'warning'
+          type: choice
+          options:
+          - info
+          - warning
+          - debug
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.JS 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Install Node.JS dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npx jest
+
+      - name: Run Build Script
+        run: node build.js
+        env:
+          WORKER_KV_ID: ${{ secrets.WORKER_KV_ID }}
+          TG_API_TOKEN: ${{ secrets.TG_API_TOKEN }}
+          WORKER_NAME: ${{ secrets.WORKER_NAME }}
+          DST_CHAT: ${{ secrets.DST_CHAT }}
+          WORKER_CRON: ${{ vars.WORKER_CRON }}
+          POST_FMT: ${{ vars.POST_FMT }}
+          POST_MARKUP: ${{ vars.POST_MARKUP }}
+
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          wranglerVersion: "3.19.0"
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

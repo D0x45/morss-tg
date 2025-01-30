@@ -1,0 +1,45 @@
+{
+    "include": ["src"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "test"
+    ],
+    "compilerOptions": {
+        "incremental": true,
+        "target": "es2022",
+        "lib": [
+            "es2022"
+        ],
+        "module": "es2022",
+        "moduleResolution": "node",
+        "types": [
+            "@cloudflare/workers-types",
+            "@types/jest",
+        ],
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "useUnknownInCatchVariables": true,
+        "alwaysStrict": true,
+        "allowSyntheticDefaultImports": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "allowUnusedLabels": true,
+        "allowUnreachableCode": true,
+        "skipLibCheck": true
+    }
+}
