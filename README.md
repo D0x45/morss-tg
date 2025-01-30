@@ -23,12 +23,14 @@ the list of `feeds.txt` in a few steps:
 to let people fork this repo and publish their changes publicly without worrying
 about api keys and sensitive info, the ci workflows uses Github Secrets.
 (github secrets get redacted in the build logs or outputs):
+
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
 - `DST_CHAT`
 - `TG_API_TOKEN`
 - `WORKER_KV_ID`
 - `WORKER_NAME`
+
 these secret variable names are pretty self-explanatory except `DST_CHAT`! fill
 this variable value with the `@username` or numeric `chat_id` of a Telegram chat.
 (NOTE that these chat ids must be valid to Telegram's bot api)
